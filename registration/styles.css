@@ -1,0 +1,149 @@
+body{
+    width: 100%;
+    color: black;
+    background-color: rgb(80, 129, 40);
+}
+.error{
+    color: crimson;
+}
+.flex-box{
+    display: flex;
+}
+
+.butt button{
+    width: 110px;
+    padding: 10px 10px 10px 10px;
+    border-radius: 10px;
+    background-color: rgb(81, 138, 165);
+    color: white;
+    font-size: large;
+    font-weight: bolder;
+    margin-top: 3%;
+}
+.notification{
+    color: rgb(78, 53, 189);
+}
+.ins{
+    color: #fff;
+}
+#myEle{
+    width: fit-content;
+}
+#myEle button{
+    border-radius: 10px;
+    border: solid orange;
+    background-color: #fff;
+    width: 150PX;
+    padding: 10px 10px 10px 10px;
+    margin-top: 1%;
+    margin-left: 5%;
+} 
+
+#myEle1 button{
+    border-radius: 10px;
+    border: solid orange;
+    background-color: #fff;
+    width: 150PX;
+    padding: 10px 10px 10px 10px;
+    margin-top: 1%;
+    margin-left: 5%;
+    color: blue;
+} 
+
+.regCol{
+    color: blue;
+}
+.box{
+    text-align: center;
+}
+.box input{
+    padding: 10px 10px;    
+}
+.radio-buttons input{
+    margin-top: 1%;
+    margin-left: 5%;
+}
+.radio-buttons{
+    margin-left: 10%;
+}
+.sel{
+    text-align: center;
+    color: rgb(254, 254, 255);
+    font-style: italic;
+    font-weight: bolder;
+    font-stretch: expanded;
+    font-size-adjust: inherit;
+}
+.butt{
+    display: flex;
+    justify-content: space-between;
+    margin-left: 10%;
+    margin-right: 10%;
+}
+.container{
+    width: 60%;
+    margin-left: 20%;
+    margin-right: 20%; 
+}
+@media (max-width:761){
+    .radio-buttons{
+        display: block;
+        width: 20%;
+    }
+}
+@media (max-width:1112px){
+    .radio-buttons{
+        display: block;
+        width: 70%;
+    }
+}
+@media (max-width:1050px){
+    .radio-buttons{
+        display: block;
+        width: 39%;
+        margin-left: 40%;
+    }
+}
+
+@media (max-width:915px){
+    .radio-buttons{
+        display: block;
+        width: 40%;
+        margin-left: 20%;
+    }
+}
+.regNumberInput{
+    width: 220px;
+}
+ h6, h2{
+    color: #fff;
+    
+}
+@media only screen and (min-width: 100px) and (max-width:500px){
+    .radio-buttons{
+        display: block;
+        width: 45%;
+    }
+    .flex-box{
+        display: flex;
+        flex-direction: column;
+    }
+}
+@media (max-width: 450px){
+    .butt{
+        display: flex;
+        flex-direction: column;
+        width: 90%;
+        justify-content: space-between;
+        margin-left: 10%;
+        margin-right: 10%;
+    }
+}
+
+@media (max-width:150px){
+    .container{
+        width: 90%;
+        margin-left: 5%;
+        margin-right: 5%;
+    }
+}

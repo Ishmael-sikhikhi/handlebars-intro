@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.min.js"></script>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration-number</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="./img/IMG_20210414_100047.ico">
+    <script type="text/x-template" class="userTemplate">
+        <ul>
+            {{#each reg}}
+                 <button>
+                     {{this}}
+                 </button>
+             {{/each}}
+        </ul>
+    </script>
+</head>
+
+<body>
+    <div class="flex-box">
+
+
+        <div class="right">
+            <div class="container">
+                <div class="box">
+                    <h1>Registration number</h1>
+                    <label for="registration-number" class="ins">
+                        <h3>Please enter registration number: </h3>
+                    </label>
+
+                    <h1 class="error"></h1>
+                    <br>
+
+
+                    <div class="regNumber">
+                        <form action="">
+                            <input type="text" class="regNumberInput">
+                            <BR>
+                            <h2>Accept registration formats, small letters are accepted as well</h2>
+                            <h6>Cape Town CA 123 456 or CA 123-456 or CA 12345</h6>
+
+                            <h6>Stellenbosch CL 123 456 or CL 123-456 or CL 12345</h6>
+
+                            <h6>Paarl CJ 123 456 or CJ 123-456 or CJ 12345</h6>
+                        </form>
+                    </div>
+                </div>
+
+                <hr size="1px" width="100%" color="">
+                <section id="myEle" class="myElement">
+
+                </section>
+                <hr size="1px" width="100%" color="">
+                <h5 class="sel">Please select town below to view registration-numbers</h5>
+                <div class="radio-buttons">
+                    <form>
+                        <input type="radio" id="rad1" name="radio" class="town" value="CA">
+                        <label for="rad1">Cape Town</label>
+
+                        <input type="radio" id="rad2" name="radio" class="town" value="CL">
+                        <label for="rad2">Stellenbosch</label>
+
+                        <input type="radio" id="rad3" name="radio" class="town" value="CJ">
+                        <label for="rad3">Paarl</label>
+                    </form>
+                </div>
+                <div class="butt">
+                    <button class="primary-button addBtn">Add</button>
+
+                    <button class="primary-button showBtn">Show</button>
+
+                    <button class="primary-button allTowns">Show all</button>
+
+                    <button class="primary-button reset">Reset</button>
+                </div>
+            </div>
+        </div> <!-- End of dom JS  -->
+
+
+        <div class="left">
+            <!-- Start templates -->
+            <div class="container">
+                <div class="box">
+                    <h1>Registration number</h1>
+                    <label for="registration-number" class="ins">
+                        <h3>Please enter registration number: </h3>
+                    </label>
+
+                    <h1 class="error-1"></h1>
+                    <br>
+
+
+                    <div class="regNumber">
+                        <form action="">
+                            <input type="text" class="regNumberInput1">
+                            <h2>Accept registration formats, small letters are accepted as well</h2>
+                            <h6>Cape Town CA 123 456 or CA 123-456 or CA 12345</h6>
+
+                            <h6>Stellenbosch CL 123 456 or CL 123-456 or CL 12345</h6>
+
+                            <h6>Paarl CJ 123 456 or CJ 123-456 or CJ 12345</h6>
+                        </form>
+                    </div>
+                </div>
+
+                <hr size="1px" width="100%" color="">
+                <section id="myEle1" class="myElement1">
+
+                </section>
+                <hr size="1px" width="100%" color="">
+                <h5 class="sel">Please select town below to view registration-numbers</h5>
+                <div class="radio-buttons">
+                    <form>
+                        <input type="radio" id="rad10" name="radio" class="town" value="CA">
+                        <label for="rad1">Cape Town</label>
+
+                        <input type="radio" id="rad20" name="radio" class="town" value="CL">
+                        <label for="rad2">Stellenbosch</label>
+
+                        <input type="radio" id="rad30" name="radio" class="town" value="CJ">
+                        <label for="rad3">Paarl</label>
+                    </form>
+                </div>
+                <div class="butt">
+                    <button class="primary-button tempAdd">Add</button>
+
+                    <button class="primary-button tempShow">Show</button>
+
+                    <button class="primary-button tempAll">Show all</button>
+
+                    <button class="primary-button tempRes">Reset</button>
+                </div>
+            </div>
+        </div>
+    </div>
+  
+    <script src="./Factory-function/registration_numberFactory.js" charset="utf-8"></script>
+    <script src="./dom/template.js" charset="utf-8"></script>
+    <script src="./dom/registration_number.js" charset="utf-8"></script>
+</body>
+
+</html>
