@@ -153,7 +153,7 @@ function templateReset() {
             error1.classList.add('notification')
         }, 0)
         setTimeout(() => {
-            localStorage.clear()
+            localStorage['rg-numbers'] = []
             location.reload()
             error1.innerHTML = ''
         }, 4000)
