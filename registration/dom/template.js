@@ -13,8 +13,8 @@ const regType30 = /^((CA|CL|CJ)\s([0-9]){3}\-([0-9]){3})$/
 var theSelectedTown = ''
 var theRegNumber = []
 
-if (localStorage['numbers']) {
-    theRegNumber = JSON.parse(localStorage.getItem('numbers'))
+if (localStorage['rg-numbers']) {
+    theRegNumber = JSON.parse(localStorage.getItem('rg-numbers'))
 }
 
 var templateSource = document.querySelector(".userTemplate").innerHTML;
@@ -48,11 +48,12 @@ function templatesAddReg() {
         reg_N = reg_N.charAt(0).toUpperCase() + reg_N.charAt(1).toUpperCase() + reg_N.slice(2)
 
         if (regType10.test(reg_N) || regType20.test(reg_N) || regType30.test(reg_N)) {
-            if (!(registration.getRegList()).includes(regNu)) {
-                registration.setReg(regNu)
-                element1.innerHTML = userTemplate({ reg: registration.getRegList() })
+            if (!theRegNumber.includes(reg_N)) {
+                registration.setReg(reg_N)
+                theRegNumber.push(reg_N)
+                element1.innerHTML = userTemplate({ reg: theRegNumber })
 
-                localStorage.setItem('numbers', JSON.stringify(registration.getRegList()))
+                localStorage.setItem('rg-numbers', JSON.stringify(theRegNumber))
                 tempResetEle()
             }
             else {// Already exist registration error1 message
@@ -102,10 +103,12 @@ function templateShowTown() {
 
     if (theSelectTown11) {
         var townReg = theSelectTown11.value
+        temp_storeDReg = registration1.filterFunction(townReg, theRegNumber)
+        console.log(temp_storeDReg)
         while (element1.firstChild) {
             element1.removeChild(element.firstChild)
         }
-        temp_storeDReg = registration.filterFunction(townReg)
+        temp_storeDReg = regNumbers
         if (temp_storeDReg.length === 0) {
             setTimeout(() => {
                 error1.innerHTML = "No registration number(s) for this town"
@@ -118,7 +121,7 @@ function templateShowTown() {
             }, 6000)
         }
         if (temp_storeDReg.length !== 0) {
-            element1.innerHTML = userTemplate({ reg: temp_storeDReg })
+            element1.innerHTML = userTemplate({ reg: registration1.filterFunction(townReg, theRegNumber) })
         }
 
     }
@@ -144,7 +147,7 @@ function templateReset() {
     element1.innerHTML = ''
     tempResetEle()
     tempUncheckRadioBtn()
-    if (localStorage['numbers']) {
+    if (localStorage['rg-numbers']) {
         setTimeout(() => {
 
             error1.innerHTML = "Storage have been successfully resetted!"
@@ -176,7 +179,7 @@ function tempUncheckRadioBtn() {
 }
 
 function templateShowAll() {
-    var temp_storeDReg = registration.getRegList()
+    var temp_storeDReg = theRegNumber
     element1.innerHTML = ''
     tempResetEle()
     tempUncheckRadioBtn()
@@ -193,6 +196,8 @@ function templateShowAll() {
     }
 
     else if (temp_storeDReg.length !== 0) {
+        var temp_storeDReg = theRegNumber
+        var temp_storeDReg = theRegNumber
         element1.innerHTML = userTemplate({ reg: temp_storeDReg })
     }
 }

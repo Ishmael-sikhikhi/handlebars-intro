@@ -15,15 +15,27 @@ const regType3 = /^((CA|CL|CJ)\s([0-9]){3}\-([0-9]){3})$/
 var selectTown = ''
 var regNumbers = []
 if (localStorage['reg-number']) {
-    regNumbers = JSON.parse(localStorage.getItem('reg-number'))
+    regNumberS = JSON.parse(localStorage.getItem('reg-number'))
+}
+if (!localStorage['reg-number']) {
+    regNumberS = regNumbers
 }
 const element = document.getElementById('myEle')
-let registration = registrations(regNumbers)
+for (var i = 0; i < regNumberS.length; i++) {
+    var regDiv1 = document.createElement("BUTTON");
+    var input = document.createTextNode(regNumberS[i])
+    regDiv1.appendChild(input);
+    regDiv1.classList.add('regCol')
+    document.getElementById('myEle').appendChild(regDiv1)
+}
+
+
+let registration = registrations()
 
 function addReg() {
-
     element.innerHTML = ''
     var regNu = regNumber.value
+
 
     var regN = regNu.charAt(0).toUpperCase() + regNu.charAt(1).toUpperCase() + regNu.slice(2)
     if (regN === '') {
@@ -40,16 +52,17 @@ function addReg() {
         regN = regN.charAt(0).toUpperCase() + regN.charAt(1).toUpperCase() + regN.slice(2)
 
         if (regType1.test(regN) || regType2.test(regN) || regType3.test(regN)) {
-            if (!(registration.getRegList()).includes(regN)) {
+            if (!regNumbers.includes(regN)) {
                 registration.setReg(regNu)
-                for (var i = 0; i < (registration.getRegList()).length; i++) {
+                regNumbers.push(regN)
+                for (var i = 0; i < regNumbers.length; i++) {
                     var regDiv = document.createElement("BUTTON");
-                    var input = document.createTextNode((registration.getRegList())[i])
+                    var input = document.createTextNode(regNumbers[i])
                     regDiv.appendChild(input);
                     regDiv.classList.add('regCol')
                     document.getElementById('myEle').appendChild(regDiv)
                 }
-                localStorage.setItem('reg-number', JSON.stringify(registration.getRegList()))
+                localStorage.setItem('reg-number', JSON.stringify(regNumbers))
                 resetEle()
             }
             else {// Already exist registration error message
@@ -61,14 +74,15 @@ function addReg() {
                     error.innerHTML = ''
                     resetEle()
                 }, 6000)
-                for (var i = 0; i < (registration.getRegList()).length; i++) {
+                for (var i = 0; i < regNumberS.length; i++) {
                     var regDiv = document.createElement("BUTTON");
-                    var input = document.createTextNode((registration.getRegList())[i])
+                    var input = document.createTextNode(regNumberS[i])
                     regDiv.appendChild(input);
                     regDiv.classList.add('regCol')
                     document.getElementById('myEle').appendChild(regDiv)
                 }
             }
+
         }
         else {
             setTimeout(() => { // not matching registration format 
@@ -79,6 +93,7 @@ function addReg() {
                 error.innerHTML = ''
                 resetEle()
             }, 4000)
+
         }
     }
     else {
@@ -95,28 +110,23 @@ function addReg() {
     uncheckRadioBtn()
 }
 
-for (var i = 0; i < (registration.getRegList()).length; i++) {
-    var regDiv1 = document.createElement("BUTTON");
-    var input = document.createTextNode((registration.getRegList())[i])
-    regDiv1.appendChild(input);
-    regDiv1.classList.add('regCol')
-    document.getElementById('myEle').appendChild(regDiv1)
-}
+
+
 
 function showRegForTown() {
+    var storeDReg = []
     element.innerHTML = ''
     resetEle()
-    var storeDReg = []
     var theSelectTown = document.querySelector("input[name='radio']:checked");
 
 
     if (theSelectTown) {
         var townReg = theSelectTown.value
+        storeDReg = registration.filterFunction(townReg, regNumberS)
         while (element.firstChild) {
             element.removeChild(element.firstChild)
         }
-        storeDReg = registration.filterFunction(townReg)
-        console.log(storeDReg)
+
         if (storeDReg.length === 0) {
             setTimeout(() => {
                 error.innerHTML = "No registration number(s) for this town"
@@ -129,6 +139,8 @@ function showRegForTown() {
             }, 6000)
         }
         if (storeDReg.length !== 0) {
+           
+            console.log(storeDReg)
             for (var i = 0; i < storeDReg.length; i++) {
 
                 var regDiv = document.createElement("BUTTON");
@@ -195,7 +207,7 @@ function uncheckRadioBtn() {
 }
 
 function showAll() {
-    var storeDReg = registration.getRegList()
+    var storeDReg = regNumbers
     element.innerHTML = ''
     resetEle()
     uncheckRadioBtn()
@@ -212,12 +224,12 @@ function showAll() {
     }
 
     else if (storeDReg.length !== 0) {
-        for (var i = 0; i < storeDReg.length; i++) {
-            var regDiv = document.createElement("BUTTON");
-            var input = document.createTextNode(storeDReg[i])
-            regDiv.appendChild(input);
-            regDiv.classList.add('regCol')
-            document.getElementById('myEle').appendChild(regDiv)
+        for (var i = 0; i < regNumberS.length; i++) {
+            var regDiv1 = document.createElement("BUTTON");
+            var input = document.createTextNode(regNumberS[i])
+            regDiv1.appendChild(input);
+            regDiv1.classList.add('regCol')
+            document.getElementById('myEle').appendChild(regDiv1)
         }
     }
 }
