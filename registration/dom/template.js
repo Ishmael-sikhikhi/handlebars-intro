@@ -103,12 +103,11 @@ function templateShowTown() {
 
     if (theSelectTown11) {
         var townReg = theSelectTown11.value
-        temp_storeDReg = registration1.filterFunction(townReg, theRegNumber)
-        console.log(temp_storeDReg)
         while (element1.firstChild) {
             element1.removeChild(element.firstChild)
         }
-        temp_storeDReg = regNumbers
+        temp_storeDReg = registration1.filterFunction(townReg, theRegNumber)
+
         if (temp_storeDReg.length === 0) {
             setTimeout(() => {
                 error1.innerHTML = "No registration number(s) for this town"
