@@ -208,7 +208,7 @@ function uncheckRadioBtn() {
 }
 
 function showAll() {
-    var storeDReg = regNumbers
+    var storeDReg = regNumberS
     element.innerHTML = ''
     resetEle()
     uncheckRadioBtn()

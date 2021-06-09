@@ -121,6 +121,7 @@ function templateShowTown() {
         }
         if (temp_storeDReg.length !== 0) {
             element1.innerHTML = userTemplate({ reg: registration1.filterFunction(townReg, theRegNumber) })
+            tempUncheckRadioBtn()
         }
 
     }
@@ -140,7 +141,7 @@ function templateShowTown() {
 
 }
 function tempResetEle() {
-    return regNumber.value = ''
+    return regNumber1.value = ''
 }
 function templateReset() {
     element1.innerHTML = ''
