@@ -139,7 +139,7 @@ function showRegForTown() {
             }, 6000)
         }
         if (storeDReg.length !== 0) {
-           
+
             console.log(storeDReg)
             for (var i = 0; i < storeDReg.length; i++) {
 
@@ -183,7 +183,7 @@ function resetRegSorage() {
             error.classList.add('notification')
         }, 0)
         setTimeout(() => {
-            localStorage['reg-number'] = []
+            localStorage.removeItem('reg-number')
             location.reload()
             error.innerHTML = ''
         }, 4000)
@@ -212,7 +212,7 @@ function showAll() {
     element.innerHTML = ''
     resetEle()
     uncheckRadioBtn()
-    
+
     if (storeDReg.length === 0) {
         setTimeout(() => {
             error.innerHTML = "No registration on storage"
